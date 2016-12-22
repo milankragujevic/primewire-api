@@ -37,7 +37,7 @@ app.get('/:type/popular/:genre/:page', function(req, res) {
 	}
 	var sort = 'featured';
 	if(type == 'series') {
-		sort = 'popular';
+		sort = 'views';
 	}
 	var url = base_url + '/?sort=' + sort + '&genre=' + genre + '&page=' + page;
 	if(type == 'series') {
@@ -206,8 +206,47 @@ app.get('/item/:id/season/:season/episode/:episode', function(req, res) {
 	var id = req.params.id;
 	var season = req.params.season;
 	var episode = req.params.episode;
-	var url = base_url = '/tv-' + id + '-X/season-' + season + '-episode-' + episode;
+	var url = base_url + '/tv-' + id + '-X/season-' + season + '-episode-' + episode;
 	
+	function done(response) {
+		if(!response) {
+			res.status(500).send('INTERNAL_ERRROR');
+			return;
+		}
+		res.status(200).send({ success: true, id: id, season: season, episode: episode, type: 'episode', links: response });
+	}
+	
+	get.concat(url, function (a,b,c) {
+        if (a) {
+            return done(false);
+        }
+        try {
+            var $ = cheerio.load(c.toString());
+        } catch (e) {
+            return done(false);
+        }
+	
+		var links = [];
+
+		$('.movie_version').each(function () {
+			var label = $(this).find('.version_host script').html();
+
+			// ignore advertisement links
+			if (/Promo|Sponsor/.test(label)) {
+				return;
+			}
+
+			var url = $(this).find('a[href^="/goto.php"]').attr('href');
+			if(typeof url == 'undefined') { return; }
+			url = url.slice(url.indexOf('?') + 1);
+			url = qs.parse(url).url;
+			url = new Buffer(url, 'base64').toString();
+
+			links.push(url);
+		});
+
+		done(links);
+	});
 });
 
 /*** LISTEN ***/
