@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import express from 'express'
 import qs from 'querystring'
 import cheerio from 'cheerio'
