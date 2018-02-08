@@ -49,4 +49,6 @@ WantedBy=multi-user.target
 Enable the service with `systemctl enable primewire.service` and start it with `systemctl start primewire.service`. 
 You can view the logs with `journalctl -u primewire`.
 
+If you get permission errors, please run `chmod +x /the/location/to/dist/app.js`.
+
 Note: Before adding the service, please run `npm run build` to generate the `app.js` file for the service to run.
