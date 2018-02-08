@@ -11,6 +11,7 @@ const app = express()
 /** CONFIG **/
 const baseUrl = 'http://primewire.ag'
 const port = process.env.PORT || 3000
+const userAgent = 'Googlebot/2.1 (+http://www.google.com/bot.html)'
 
 const requestCache = (duration) => {
   return (req, res, next) => {
@@ -70,7 +71,11 @@ app.get('/:type/popular/:genre/:page', requestCache(60 * 60 * 6), (req, res) => 
     if (genre === '') { genre = 'all' }
     res.send({ success: true, page, genre, sort, type, data: response })
   }
-  get.concat(url, (a, b, c) => {
+  get.concat(url, {
+      headers: {
+         'user-agent': userAgent
+      }
+    }, (a, b, c) => {
     if (a) {
       return done(false)
     }
@@ -121,7 +126,11 @@ app.get('/item/:id', requestCache(60 * 60 * 6), (req, res) => {
     res.send({ success: true, id, data: response })
   }
 
-  get.concat(url, (a, b, c) => {
+  get.concat(url, {
+      headers: {
+         'user-agent': userAgent
+      }
+    }, (a, b, c) => {
     if (a) {
       return done(false)
     }
@@ -236,7 +245,11 @@ app.get('/item/:id/season/:season/episode/:episode', requestCache(60 * 60 * 6), 
     res.send({ success: true, id, season, episode, type: 'episode', links: response })
   }
 
-  get.concat(url, (a, b, c) => {
+  get.concat(url, {
+      headers: {
+         'user-agent': userAgent
+      }
+    }, (a, b, c) => {
     if (a) {
       return done(false)
     }

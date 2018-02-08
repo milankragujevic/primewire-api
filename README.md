@@ -24,3 +24,27 @@ npm start
 ## Documentation
 
 Coming soon, for now look in `app.js` and follow the code...
+
+## Running as a service
+
+Create `primewire.service` in `/etc/systemd/system` with the following contents (replace `[APPJS_PATH]` with the full path to `app.js` of `primewire-api`):
+
+```
+[Unit]
+Description=Primewire API
+
+[Service]
+ExecStart=[APPJS_PATH]/app.js
+Restart=always
+User=nobody
+Group=nogroup 
+Environment=PATH=/usr/bin:/usr/local/bin
+Environment=NODE_ENV=production
+WorkingDirectory=[APPJS_PATH]/
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable the service with `systemctl enable primewire.service` and start it with `systemctl start primewire.service`. 
+You can view the logs with `journalctl -u primewire`.
