@@ -1,21 +1,31 @@
 {
   "name": "primewire-api",
+  "version": "1.0.3",
   "description": "API for the popular movies and series website, Primewire.ag",
-  "version": "1.0.2",
-  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"build": "babel ./app.js --out-dir dist/ --presets=es2015 --plugins=transform-runtime,transform-es2015-modules-commonjs",
+	"start": "node dist/app.js"
+  },
   "dependencies": {
     "cheerio": "^0.22.0",
-    "episode": "^0.2.0",
     "express": "^4.14.0",
+    "memory-cache": "^0.2.0",
     "minimist": "^1.2.0",
     "simple-get": "^2.3.0"
   },
-  "main": "app.js",
-  "engine": {
-    "node": "*",
-    "npm": "*"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milankragujevic/primewire-api.git"
   },
-  "scripts": {
-    "start": "node app.js"
-  }
+  "keywords": [
+    "primewire"
+  ],
+  "author": "Milan Kragujević",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milankragujevic/primewire-api/issues"
+  },
+  "homepage": "https://github.com/milankragujevic/primewire-api#readme"
 }
