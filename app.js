@@ -71,7 +71,8 @@ app.get('/:type/popular/:genre/:page', requestCache(60 * 60 * 6), (req, res) => 
     if (genre === '') { genre = 'all' }
     res.send({ success: true, page, genre, sort, type, data: response })
   }
-  get.concat(url, {
+  get.concat({
+    url: url,
     headers: {
       'user-agent': userAgent
     }
@@ -126,7 +127,8 @@ app.get('/item/:id', requestCache(60 * 60 * 6), (req, res) => {
     res.send({ success: true, id, data: response })
   }
 
-  get.concat(url, {
+  get.concat({
+    url: url,
     headers: {
       'user-agent': userAgent
     }
@@ -245,7 +247,8 @@ app.get('/item/:id/season/:season/episode/:episode', requestCache(60 * 60 * 6), 
     res.send({ success: true, id, season, episode, type: 'episode', links: response })
   }
 
-  get.concat(url, {
+  get.concat({
+    url: url,
     headers: {
       'user-agent': userAgent
     }
