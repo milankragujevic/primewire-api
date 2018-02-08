@@ -16,6 +16,7 @@ By using this API you may be committing copyright infringement. I am not respons
 git clone https://github.com/milankragujevic/primewire-api
 cd primewire-api
 npm install
+npm install --save-dev babel-cli babel-plugin-transform-runtime babel-preset-es2015
 npm run build
 npm start
 ```
