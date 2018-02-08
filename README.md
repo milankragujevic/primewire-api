@@ -27,14 +27,14 @@ Coming soon, for now look in `app.js` and follow the code...
 
 ## Running as a service
 
-Create `primewire.service` in `/etc/systemd/system` with the following contents (replace `[APPJS_PATH]` with the full path to `app.js` of `primewire-api`):
+Create `primewire.service` in `/etc/systemd/system` with the following contents (replace `[APPJS_PATH]` with the full path to `primewire-api`):
 
 ```
 [Unit]
 Description=Primewire API
 
 [Service]
-ExecStart=[APPJS_PATH]/app.js
+ExecStart=[APPJS_PATH]/dist/app.js
 Restart=always
 User=nobody
 Group=nogroup 
@@ -48,3 +48,5 @@ WantedBy=multi-user.target
 
 Enable the service with `systemctl enable primewire.service` and start it with `systemctl start primewire.service`. 
 You can view the logs with `journalctl -u primewire`.
+
+Note: Before adding the service, please run `npm run build` to generate the `app.js` file for the service to run.
