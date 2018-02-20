@@ -1,10 +1,16 @@
 #!/usr/bin/env node
-
+/*
 import express from 'express'
 import qs from 'querystring'
 import cheerio from 'cheerio'
 import get from 'simple-get'
 import mcache from 'memory-cache'
+*/
+const express = require('express')
+const qs = require('querystring')
+const cheerio = require('cheerio')
+const get = require('simple-get')
+const mcache = require('memory-cache')
 
 const app = express()
 
