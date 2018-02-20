@@ -16,9 +16,7 @@ By using this API you may be committing copyright infringement. I am not respons
 git clone https://github.com/milankragujevic/primewire-api
 cd primewire-api
 npm install
-npm install --save-dev babel-cli babel-plugin-transform-runtime babel-preset-es2015
-npm run build
-npm start
+node app.js
 ```
 
 ## Documentation
@@ -34,7 +32,7 @@ Create `primewire.service` in `/etc/systemd/system` with the following contents 
 Description=Primewire API
 
 [Service]
-ExecStart=[APPJS_PATH]/dist/app.js
+ExecStart=[APPJS_PATH]/app.js
 Restart=always
 User=nobody
 Group=nogroup 
@@ -49,6 +47,4 @@ WantedBy=multi-user.target
 Enable the service with `systemctl enable primewire.service` and start it with `systemctl start primewire.service`. 
 You can view the logs with `journalctl -u primewire`.
 
-If you get permission errors, please run `chmod +x /the/location/to/dist/app.js`.
-
-Note: Before adding the service, please run `npm run build` to generate the `app.js` file for the service to run.
+If you get permission errors, please run `chmod +x /the/location/to/app.js`.
