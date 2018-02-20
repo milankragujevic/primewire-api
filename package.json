@@ -4,7 +4,7 @@
   "description": "API for the popular movies and series website, Primewire.ag",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
