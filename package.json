@@ -5,8 +5,6 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"build": "babel ./app.js --out-dir dist/ --presets=es2015 --plugins=transform-runtime,transform-es2015-modules-commonjs",
-	"start": "node dist/app.js"
   },
   "dependencies": {
     "cheerio": "^0.22.0",
