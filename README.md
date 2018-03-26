@@ -1,7 +1,7 @@
 # Primewire API
 
 ## DEPRECATED
-This project has been deprecated, all further development will be done on [milankragujevic/primewire](https://github.com/milankragujevic/primewire). Thanks.
+This project has been deprecated, all further development will be done on [milankragujevic/primewire-client](https://github.com/milankragujevic/primewire-client). Thanks.
 
 ---
 
