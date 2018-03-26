@@ -1,5 +1,10 @@
 # Primewire API
 
+## DEPRECATED
+This project has been deprecated, all further development will be done on [milankragujevic/primewire](https://github.com/milankragujevic/primewire). Thanks.
+
+---
+
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 Simple API written in Node with Express and in-memory caching for accessing the content on a popular movie website, Primewire.
